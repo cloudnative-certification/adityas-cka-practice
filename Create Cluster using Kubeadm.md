@@ -106,7 +106,7 @@
  192.168.x.xxx. That is the ip address of the VM]
 
  kubeadm config images pull
- kubeadm init –apiserver-advertise-address= --pod-network-cidr=192.168.0.0/16 [Copy the last part of the output. That would be used by worker nodes to join the master node]
+ kubeadm init –apiserver-advertise-address $(hostname -i) --pod-network-cidr=192.168.0.0/16 [Copy the last part of the output. That would be used by worker nodes to join the master node]
 
  mkdir -p $HOME/.kube
  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
