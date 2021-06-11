@@ -1,4 +1,4 @@
-# Kubernetes troubleshooting guide
+#Kubernetes troubleshooting guide
 
 ## Troubleshoot Cluster
 * Steps to know the issue
@@ -23,36 +23,47 @@
   
 * Specific scenarios:
     * Apiserver VM shutdown or apiserver crashing
-        Results
-            unable to stop, update, or start new pods, services, replication controller
-            existing pods and services should continue to work normally, unless they depend on the Kubernetes API
+       > Results            
+       >> unable to stop, update, or start new pods, services, replication controller
+       >>
+       >> existing pods and services should continue to work normally, unless they depend on the Kubernetes API
+            
     * Apiserver backing storage lost
-        Results
-            apiserver should fail to come up
-            kubelets will not be able to reach it but will continue to run the same pods and provide the same service proxying
-            manual recovery or recreation of apiserver state necessary before apiserver is restarted
-            Supporting services (node controller, replication controller manager, scheduler, etc) VM shutdown or crashes
-            currently those are colocated with the apiserver, and their unavailability has similar consequences as apiserver
-            in future, these will be replicated as well and may not be co-located
-            they do not have their own persistent state
+        > Results
+        >> apiserver should fail to come up
+        >> 
+        >> kubelets will not be able to reach it but will continue to run the same pods and provide the same service proxying
+        >> 
+        >> manual recovery or recreation of apiserver state necessary before apiserver is restarted
+        >> 
+        >> Supporting services (node controller, replication controller manager, scheduler, etc) VM shutdown or crashes
+        >> 
+        >> currently those are colocated with the apiserver, and their unavailability has similar consequences as apiserver
+        >> 
+        >> in future, these will be replicated as well and may not be co-located they do not have their own persistent state
+
+
    *  Individual node (VM or physical machine) shuts down
-        Results
-            pods on that Node stop running
+        > Results
+        >> pods on that Node stop running
     * Network partition
-        Results
-            partition A thinks the nodes in partition B are down; partition B thinks the apiserver is down. (Assuming the master VM ends up in partition A.
+        >Results
+        >>partition A thinks the nodes in partition B are down; partition B thinks the apiserver is down. (Assuming the master VM ends up in partition A.
     * Kubelet software fault
-        Results
-            crashing kubelet cannot start new pods on the node
-            kubelet might delete the pods or not
-            node marked unhealthy
+        >Results
+        >>crashing kubelet cannot start new pods on the node
+        >>
+        >>kubelet might delete the pods or not
+        >>
+        >>node marked unhealthy
     replication controllers start new pods elsewhere
     * Cluster operator error
-        Results
-            loss of pods, services, etc
-            lost of apiserver backing store
-            users unable to read API
-            etc.
+        >Results
+        >>loss of pods, services, etc
+        >>
+        >>lost of apiserver backing store
+        >>
+        >>users unable to read API etc.
 
 ## Troubleshoot Pods
 * Pod status *Pending*
