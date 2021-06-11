@@ -1,4 +1,4 @@
-#Kubernetes troubleshooting guide
+# Kubernetes troubleshooting guide
 
 ## Troubleshoot Cluster
 * Steps to know the issue
