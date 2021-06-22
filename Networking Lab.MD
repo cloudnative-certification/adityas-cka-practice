@@ -4,22 +4,22 @@
   > ip a |grep -B2 <address of node 10.3.25.9>
   
 * To know mac address 
- > arp <node-address>
+  > arp <node-address>
  
 * Container Runtime Bridge
- > ip link | grep -B2 docker
+  > ip link | grep -B2 docker
 
 * To know default gateway
- > ip route show default
+  > ip route show default
 
 * What is the port the kube-scheduler is listening on in the controlplane node?
- > netstat -ntpl | grep kube-scheduler 
+  > netstat -ntpl | grep kube-scheduler 
  
 * Identify kubelet service and identify the network plugin configured for Kubernetes
- > ps -aux | grep kubelet|grep network-plugin
+  > ps -aux | grep kubelet|grep network-plugin
  
 * What is the path configured with all binaries of CNI supported plugins?
- > /opt/cni/bni
+  > /opt/cni/bni
  
 * What is the CNI plugin configured to be used on this kubernetes cluster?
   > Run the command: ls /etc/cni/net.d/ and identify the name of the plugin
@@ -53,7 +53,7 @@
   
   
 * Ingress sample
-  
+
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Ingress
